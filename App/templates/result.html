@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap core CSS -->
+    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <!-- <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet"> -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <title>Flower_Detection</title>
+    <link href="static/css/grayscale.min.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="static/css/lightgallery.css" />
+
+    <style>
+        /* ----- Variables ----- */
+        /* ----- Global ----- */
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: grid;
+            grid-template-rows: 1fr;
+            font-family: 'Roboto', sans-serif !important;
+            background-color: #01e37f;
+            letter-spacing: 0 !important;
+        }
+
+        h3 {
+            font-size: 0.875em;
+            letter-spacing: 1.2px;
+            color: #a6a6a6;
+        }
+
+        img {
+            max-width: 100%;
+            min-height: 55px !important;
+            object-fit: cover;
+            filter: drop-shadow(1px 1px 3px #a6a6a6);
+            filter: drop-shadow(1px 1px 3px #a6a6a6);
+        }
+
+        /* ----- Product Section ----- */
+        .product {
+            display: grid;
+            grid-template-columns: 0.9fr 1fr;
+            margin: auto;
+            padding: 2.5em 0;
+            min-width: 600px;
+            background-color: white;
+            border-radius: 5px;
+        }
+
+        /* ----- Photo Section ----- */
+        .product__photo {
+            position: relative;
+        }
+
+        .photo-container {
+            position: absolute;
+            left: -2.5em;
+            display: grid;
+            grid-template-rows: 1fr;
+            width: 100%;
+            height: 100%;
+            border-radius: 6px;
+            box-shadow: 4px 4px 25px -2px rgba(0, 0, 0, 0.3);
+        }
+
+        .photo-main {
+            border-radius: 6px 6px 0 0;
+            /*   background-color: #9be010;
+  background: radial-gradient(#e5f89e, #96e001); */
+        }
+
+        .photo-main .controls {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8em;
+            color: #fff;
+        }
+
+        .photo-main .controls i {
+            cursor: pointer;
+        }
+
+        .photo-main img {
+            position: absolute;
+            left: -3.5em;
+            top: 2em;
+            max-width: 110%;
+            filter: saturate(150%) contrast(120%) hue-rotate(10deg) drop-shadow(1px 20px 10px rgba(0, 0, 0, 0.3));
+        }
+
+        .photo-album {
+            padding: 0.7em 1em;
+            border-radius: 0 0 6px 6px;
+            background-color: #fff;
+        }
+
+        .photo-album ul {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
+
+
+        .photo-album li {
+            /*     float: left; */
+            width: 55px;
+            height: 55px;
+            margin: 5px;
+            border: 1px solid #a6a6a6;
+            /* border-radius: 3px; */
+            overflow: hidden;
+        }
+
+        /* ----- Informations Section ----- */
+        .product__info {
+            padding: 0.8em 0;
+        }
+
+        .title h1 {
+            margin-bottom: 0.1em;
+            color: #4c4c4c;
+            font-size: 26px;
+            font-weight: 900;
+        }
+
+        .title span {
+            font-size: 13px;
+            color: #a6a6a6;
+        }
+
+
+        .description {
+            clear: left;
+            margin: 2em 0;
+            font-size: 15px;
+        }
+
+        .description h3 {
+            margin-bottom: 1em;
+        }
+
+        .description ul {
+            font-size: 1.3em;
+            list-style: disc;
+            /* margin-left: 1em; */
+        }
+
+        .description li {
+            /* text-indent: -0.6em; */
+            margin-bottom: 0.5em;
+            text-align: justify;
+            /* word-spacing: .05em; */
+            line-height: 2;
+    }
+
+        .buy--btn {
+            padding: 1.5em 3.1em;
+            border: none;
+            border-radius: 7px;
+            font-size: 0.8em;
+            font-weight: 700;
+            letter-spacing: 1.3px;
+            color: #fff;
+            background-color: #ff3f40;
+            box-shadow: 2px 2px 25px -7px #4c4c4c;
+            cursor: pointer;
+        }
+        .photo-main {
+            
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .buy--btn:active {
+            transform: scale(0.97);
+        }
+
+        /* ----- Footer Section ----- */
+        footer {
+            padding: 1em;
+            text-align: center;
+            color: #fff;
+        }
+
+        footer a {
+            color: #4c4c4c;
+        }
+
+        footer a:hover {
+            color: #ff3f40;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- <div class="imgbox">
+    <img class="center-fit" src="static/upload.jpg">
+    <h3 class="center-fit btn btn-primary js-scroll-trigger">Results: {{ predict }} Time=: {{timee}}s</h3>
+</div> -->
+
+    <div class="container">
+        <div class="mt-5">
+            {% for key, predict in predict_list.items() %}
+                <div class="row mb-5">
+                    <div class=" col-12">
+                        <section class="product">
+                            <div class="product__photo">
+                                <div class="photo-container">
+                                    <div class="photo-main"
+                                        style="background-image: url({{ url_for('static', filename='upload/'+ key) }}); background-position: center;">
+                                        <div class="controls">
+                                            <!-- <i class="material-icons">share</i>
+                                            <i class="material-icons">favorite_border</i> -->
+                                        </div>
+
+                                    </div>
+                                    <div class="photo-album">
+                                        <ul id={{predict.id}} lg-uid="lg0">
+                                            
+                                            {% for image in predict.similar %}
+                                            <li data-responsive={{ url_for('static', filename='img/'+ image)}}
+                                            data-src={{ url_for('static', filename='img/'+ image)}}
+                                            data-sub-html="<h4>{{predict.predict}}</h4>">
+                                            <img src={{ url_for('static', filename='img/'+ image)}}
+                                                alt={{predict.predict}}></li> 
+                                            {% endfor %}
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product__info">
+                                <div class="title">
+                                    <h1>{{predict.predict}}</h1>
+                                    <span>THỜI GIAN DỰ ĐOÁN: {{predict.time}} s</span>
+                                </div>
+                                <div class="description">
+                                    <h3>MÔ TẢ:</h3>
+                                    <ul style="margin-right: 40px">
+                                        {% if predict.predict == 'Hoa Hồng' %}
+                                            <li>Hoa hồng có thân cây nhỏ, màu xanh nhưng vô cùng chắc khỏe, cứng cáp.</li>
+                                            <li>Bông hoa vững vàng trên cuống rắn chắc thành một tư thế uy nghi nhưng vẫn toát lên vẻ đẹp dịu dàng, duyên dáng.</li>
+                                            <li>Hoa hồng là biểu tượng của tình yêu chung thuỷ, son sắc thời đại.</li>
+                                        {% endif %}
+
+                                        {% if predict.predict == 'Hoa Tuy Líp' %}
+                                            <li>Loài hoa Tuy Líp xinh đẹp với hình dáng như chiếc chuông để ngược.</li>
+                                            <li>Bông hoa vững vàng trên cuống rắn chắc thành một tư thế uy nghi nhưng vẫn toát lên vẻ đẹp dịu dàng, duyên dáng.</li>
+                                            <li>Vẻ đẹp của Tuy Líp có nhu có cương, mềm nhưng không mềm, cứng nhưng không rắn, vẻ ngoài yếu đuối nhưng bên trong quyết đoán, mạnh mẽ, tràn trề sức sống.</li>
+                                        {% endif %}
+
+                                        {% if predict.predict == 'Hoa Cúc' %}
+                                            <li>Hoa Cúc bình dị và đơn sơ đến lạ, thế nhưng, chính nét giản đơn ấy lại trở thành một điều đáng yêu và đáng thích.</li>
+                                            <li>Hoa cúc nhẹ nhàng lắm, gần gũi lắm và cũng mang lại nhiều cảm xúc nơi tâm hồn người ngắm.</li>
+                                            <li>Thế giới của hoa Cúc ấy rộng lớn biết bao, mênh mông biết bao: mênh mông bởi chính sự đa dạng của hình dáng, màu sắc, và của cả ý nghĩa của mỗi sắc hoa mang lạ.</li>
+                                        {% endif %}
+
+                                        {% if predict.predict == 'Hoa Hướng Dương' %}
+                                            <li>Hoa Hướng Dương đã được người dân bản địa tôn sùng vì vẻ đẹp lộng lẫy, mạnh mẽ của nó.</li>
+                                            <li>Ngày nay, Hướng Dương còn được chọn làm biểu tượng cho một chiến dịch sức khoẻ có ý nghĩa rất to lớn trong cộng đồng.</li>
+                                            <li>Hoa Hướng Dương thích hợp để bày tỏ tình cảm trong các dịp kỉ niệm tình yêu, tình bạn, cũng như những dịp chúc mừng, để gửi đi thông điệp về sự hân hoan, phấn khởi</li>
+                                        {% endif %}
+
+                                        {% if predict.predict == 'Hoa Bồ Công Anh' %}
+                                            <li>Bồ Công Anh đặc biệt nhất là tình yêu thuần khiết, thể hiện một tình yêu đơn thuần, tinh khiết và trong sáng nhất..</li>
+                                            <li>Bồ Công Anh thể hiện sự ngây thơ và thuần khiết của những đứa trẻ, tựa như thiên sứ tỏa sáng trên trời.</li>
+                                            <li>Việc tặng hoa Bồ Công Anh còn mang ý nghĩa rằng bạn sẽ luôn bên cạnh và hỗ trợ họ trên chặng đường tiếp theo của cuộc đời.</li>
+                                        {% endif %}
+
+                                        
+                                        
+                                    </ul>
+                                </div>
+                                <div class="description">
+                                    
+                                    <!-- <ul style="margin-right: 25px">
+                                        {% if predict.predict == 'Hoa Tuy Líp' %}
+                                        <li>Hoa hồng đỏ: tượng trưng cho một tình yêu nồng cháy và lãng mạn.</li>
+                                        <li>Hoa hồng trắng: tượng trưng cho sự ngây thơ, duyên dáng và sự cảm thông..</li>
+                                        <li>Hoa hồng xanh: tượng trưng cho một tình yêu bất diệt.</li>
+                                        <li>Hoa hồng vàng: biểu tượng của tình bạn – sự quan tâm. </li>
+                                        {% endif %}
+                                        
+                                    </ul> -->
+                                </div>
+                                <a href="http://127.0.0.1:9212/" class="buy--btn">XEM THÊM</a>
+                                
+                                <!-- <button class="buy--btn">XEM THÊM</button> -->
+                            </div>
+                        </section>
+
+                    </div>
+                </div>   
+                
+            {% endfor %}
+            
+
+
+        </div>
+    </div>
+    </div>
+
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="static/js/grayscale.min.js"></script>
+
+     <!-- jQuery version must be >= 1.8.0; -->
+     <script src="jquery.min.js"></script>
+
+     <!-- A jQuery plugin that adds cross-browser mouse wheel support. (Optional) -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+ 
+     <script src="static/js/lightgallery.min.js"></script>
+ 
+     <!-- lightgallery plugins -->
+     <!-- <script src="static/js/lg-pager.js"></script>
+     <script src="static/js/lg-autoplay.js"></script>
+     <script src="static/js/lg-share.js"></script>
+     <script src="static/js/lg-fullscreen.js"></script>
+     <script src="static/js/lg-zoom.js"></script>
+     <script src="static/js/picturefill.min.js"></script>
+     <script src="static/js/lg-hash.js"></script> -->
+     <!-- <script>lightGallery(document.getElementById('lightgallery'))</script> -->
+     <script type="text/javascript">
+        $(document).ready(function() {
+            {% for key, predict in predict_list.items() %}
+            $("#{{predict.id}}").lightGallery(); 
+            {% endfor %}
+           
+        });
+    </script>
+
+</body>
+
+</html>
